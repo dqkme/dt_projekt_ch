@@ -40,13 +40,19 @@ Bol navrhnutý hviezdicový model (star schema), ktorý umožňuje efektívnu an
 `dim_time`: Obsahuje podrobné časové údaje, ako sú hodina, minúta a sekunda, pre presnejšiu analýzu transakcií.
 `dim_track`: Obsahuje údaje o skladbách, albumoch, interpretoch a žánroch.
 
+<p align="center">
+  <img src="https://github.com/dqkme/dt_projekt_ch/blob/main/dt_projekt_star.png" alt="ERD Schema">
+  <br>
+  <em>Star schéma Chinook</em>
+</p>
+
 ## **3. ETL proces v Snowflake**
 
 ETL proces v Snowflake zahŕňal tri hlavné fázy: extrahovanie (Extract), transformácia (Transform) a načítanie (Load). Tento proces bol navrhnutý na spracovanie zdrojových dát zo staging vrstvy a ich transformáciu do dimenzionálneho modelu, ktorý je optimalizovaný pre analýzu a vizualizáciu.
 
 ### **3.1 Extract (Extrahovanie dát)**
 
-Dáta zo zdrojových súborov vo formáte .csv boli nahrané do Snowflake do dočasného úložiska s názvom **TEMP_STAGE**. Pred samotným nahraním dát bola vytvorená a inicializovaná databáza, dátový sklad a schéma. Ďalšie kroky zahŕňali import údajov do staging tabuliek. Proces bol spustený pomocou nasledujúcich príkazov:
+Dáta zo zdrojových súborov vo formáte .csv boli nahrané do Snowflake do dočasného úložiska s názvom *TAPER_STAGE**. Pred samotným nahraním dát bola vytvorená a inicializovaná databáza, dátový sklad a schéma. Ďalšie kroky zahŕňali import údajov do staging tabuliek. Proces bol spustený pomocou nasledujúcich príkazov:
 
 ```sql
 CREATE DATABASE IF NOT EXISTS CHINOOK_TAPIR;
@@ -80,7 +86,9 @@ FILE_FORMAT = (TYPE = 'CSV' FIELD_OPTIONALLY_ENCLOSED_BY = '"' SKIP_HEADER = 1);
 
 Overovanie kodu:
 
+```sql
 SELECT * FROM stage_customer;
+```
 
 ### **3.2 Transfor (Transformácia dát)**
 
