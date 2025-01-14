@@ -116,16 +116,16 @@ select * from dim_customer;
 Po úspešnom vytvorení dimenzií a faktových tabuliek boli staging tabuľky odstránené, aby sa uvoľnilo úložisko a optimalizovala jeho kapacita. Príklad príkazu na čistenie staging tabuliek:
 
 ```sql
-DROP TABLE IF EXISTS customer;
-DROP TABLE IF EXISTS album;
-DROP TABLE IF EXISTS artist;
-DROP TABLE IF EXISTS genre;
-DROP TABLE IF EXISTS employee;
-DROP TABLE IF EXISTS mediatype;
-DROP TABLE IF EXISTS track;
-DROP TABLE IF EXISTS invoiceline;
-DROP TABLE IF EXISTS invoice;
-DROP TABLE IF EXISTS playlisttrack;
+DROP TABLE IF EXISTS stage_customer;
+DROP TABLE IF EXISTS stage_album;
+DROP TABLE IF EXISTS stage_artist;
+DROP TABLE IF EXISTS stage_genre;
+DROP TABLE IF EXISTS stage_employee;
+DROP TABLE IF EXISTS stage_mediatype;
+DROP TABLE IF EXISTS stage_track;
+DROP TABLE IF EXISTS stage_invoiceline;
+DROP TABLE IF EXISTS stage_invoice;
+DROP TABLE IF EXISTS stage_playlisttrack;
 ```
 
 Tento krok zabezpečil, že v systéme nezostali zbytočné dočasné dáta po ukončení ETL procesu.
